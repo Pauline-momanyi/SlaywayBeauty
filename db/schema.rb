@@ -11,25 +11,14 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2022_07_30_111220) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "bookings", force: :cascade do |t|
     t.string "service"
     t.string "date"
     t.string "time"
     t.string "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "movies", force: :cascade do |t|
-    t.string "title"
-    t.integer "year"
-    t.integer "length"
-    t.string "director"
-    t.string "description"
-    t.string "poster_url"
-    t.string "category"
-    t.boolean "discount"
-    t.boolean "female_director"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
