@@ -1,0 +1,36 @@
+.mainbook{
+    background-image: url("../../img/swbg.png");
+    /* background-repeat: no-repeat; */
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;  
+}
+
+.book{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.blur{
+    position: absolute;
+    width: 50%;
+    height: 14rem;
+    border-radius: 50%;
+    background: #fe7d6a40;
+    z-index: -9;
+    filter: blur(82px);
+    top: 70%;
+    left: 26%;
+}
+
+
+@media only screen and (max-width: 750px){
+    .book{
+        display: flex;
+        flex-direction: column;
+    }
+
+   
+}

@@ -1,0 +1,38 @@
+.slots {
+    display: flex;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .slots>div{
+    background-color: #fdf0f0;
+    width: 6rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    margin: 20px 0px 20px 40px;
+  }
+  
+  .slots>div>p{
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+
+  .slots>div:hover{
+    background-color: black;
+    color: white;
+
+  }
+
+  @media only screen and (max-width: 400px){
+    .slots>div{
+        width: 4rem;
+        margin: 10px 0px 10px 10px;
+    }
+
+   
+}
