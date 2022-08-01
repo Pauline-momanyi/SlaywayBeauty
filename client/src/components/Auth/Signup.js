@@ -14,7 +14,7 @@ const Signup = ({onLogin}) => {
         // console.log(username + email + phone + password + passwordConfirmation);
         setErrors([]);
         setIsLoading(true);
-        fetch("/signup", {
+        fetch("/api/signup", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

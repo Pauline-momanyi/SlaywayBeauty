@@ -22,7 +22,7 @@ function Auth({ onLogin, user }){
 
     useEffect(() => {
       if(user){
-        navigate('/book')
+        navigate('/api/book')
       }
     }, []);
 

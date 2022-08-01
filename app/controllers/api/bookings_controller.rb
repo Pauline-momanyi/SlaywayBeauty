@@ -1,4 +1,4 @@
-class BookingsController < ApplicationController
+class Api::BookingsController < ApplicationController
     before_action :authorize
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 

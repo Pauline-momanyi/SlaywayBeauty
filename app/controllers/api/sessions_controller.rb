@@ -1,4 +1,4 @@
-class SessionsController < ApplicationController
+class Api::SessionsController < ApplicationController
     # rescue_from ActiveRecord::RecordInvalid, with: :render_unauthorized
     # rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
