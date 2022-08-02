@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import BookItem from "./BookItem";
+import Reviews from "../Reviewspop";
 
 function Active() {
   const [actives, setActives] = useState([])
   const [errors, setErrors] = useState([])
+  const [show, setShow] = useState(false)
   useEffect(()=>{
     fetch('/api/bookings')
     .then((r) => {
@@ -44,7 +46,8 @@ function Active() {
      }).then((r) => {
         if (r.ok) {
           r.json().then((data) => {
-            console.log(data);          
+            console.log(data);  
+            setShow(true);        
         });
         } else {
           r.json().then((err) => setErrors(err.errors));
@@ -52,7 +55,7 @@ function Active() {
       });
   }
 
-  return (
+  return (<>
     <table className="table-auto w-full">
       <tbody className="text-md divide-y divide-gray-100">
         {actives.map(active=>(active.status === true &&
@@ -87,7 +90,8 @@ function Active() {
         {/* <BookItem/> */}
       </tbody>
     </table>
-  );
+    {show && <Reviews />}
+  </>);
 }
 
 export default Active;

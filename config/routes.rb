@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :bookings, only: [:index, :create, :destroy, :update]
     resources :admins, only: [:index, :update]
     resources :pasts, only: [:index]
+    resources :reviews, only: [:index, :create]
   end
 
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
