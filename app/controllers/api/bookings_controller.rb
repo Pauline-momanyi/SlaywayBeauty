@@ -3,9 +3,8 @@ class Api::BookingsController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
     def index
-       bookings = @current_user.bookings.all
-       render json: bookings
-    
+       bookings = @current_user.bookings.all.order("date DESC")
+       render json: bookings    
     end 
 
     def create        

@@ -16,7 +16,10 @@ import Admin from './components/Admin/Admin';
 function App() {
   const [user, setUser] = useState(null);
 
+  const [bookings, setBookings] = useState([])
+
   let navigate = useNavigate()
+  // navigate('/book')
 
   useEffect(() => {
     // auto-login
@@ -46,12 +49,13 @@ function App() {
   // if (user) return <Book/>;
 
  
-  // if (!user) return <Auth onLogin={setUser} />;
+  // if (!user) return <Auth onLogin={()=>setUser} />;
   // if (user){
   //   navigate('/book')
   // }else{
   //   return <Auth onLogin={setUser} />;
   // }
+  // if(bookings.length>0){console.log(bookings)}
   return (
     
       <div className="App">
@@ -62,7 +66,7 @@ function App() {
           <Route path='/admin' element={<Admin/>}/>
           <Route path='/book' element={<Book user={user}/>}/>
           <Route path='/auth' element={<Auth user={user} setUser={setUser} />}/>
-          <Route path='/mybookings' element={<Mybookings/>}/>
+          <Route path='/mybookings' element={<Mybookings bookings={()=>setBookings}/>}/>
         </Routes> 
       <Footer/>
       </div>

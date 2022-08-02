@@ -7,7 +7,7 @@ import Box from '@material-ui/core/Box';
 import Active from './Active';
 import Past from './Past';
 
-const Mybookings=()=>{
+const Mybookings=({bookings})=>{
 const [value,setValue]=useState(0)
 const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -27,7 +27,7 @@ const handleChange = (event, newValue) => {
       >
         {value === index && (
           <Box>
-            <Typography>{children}</Typography>
+            <Typography component="span">{children}</Typography>
           </Box>
         )}
       </div>

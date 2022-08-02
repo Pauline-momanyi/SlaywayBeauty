@@ -5,11 +5,14 @@ import "react-calendar/dist/Calendar.css";
 import moment from "moment";
 import "./Calender.css";
 
-function Calender({user}) {
+function Calender({user, bookings}) {
   const [date, setDate] = useState(new Date());
   const [service, setService] = useState('Hair')
   const [time, setTime] = useState('')
   const [booked, setBooked] = useState('')
+  // const [bookings, setBookings] = useState([])
+
+  const [errors, setErrors] = useState([])
 
   function onChange(date) {
     // change results based on calendar date click
@@ -56,7 +59,7 @@ function Calender({user}) {
 
     e.preventDefault();
     // setIsLoading(true);
-    fetch("/bookings", {
+    fetch("/api/bookings", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -80,6 +83,20 @@ function Calender({user}) {
 
   const reloadPage = () => {
     window.location.reload()
+  }
+
+  function handleMybookings(){
+    fetch('/api/bookings')
+    .then((r) => {
+      if (r.ok) {
+        r.json().then(data=> {
+          console.log(data)
+          bookings(data)
+        })
+      } else {
+        r.json().then((err) => console.log(err));
+      }
+    });
   }
 
 
@@ -128,7 +145,7 @@ function Calender({user}) {
         </div>
         <div className="space-x-10 mt-5">
           <button onClick={reloadPage}>Book Again</button>
-          <Link to='/mybookings'><button>My Bookings</button></Link>
+          <Link to='/mybookings'><button onClick={handleMybookings}>My Bookings</button></Link>
           </div>
         </div>:
       <div className="flex flex-col items-center justify-center ml-20">
