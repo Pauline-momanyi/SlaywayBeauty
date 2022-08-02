@@ -26,7 +26,8 @@ function App() {
     fetch("/api/me").then((r) => {
       if (r.ok) {
         r.json().then((user) => {
-          navigate('/book')
+          if(user.admin){navigate('/admin')
+        }else{navigate('/book')}
           console.log(user);
           setUser(user)});
           // if(user){

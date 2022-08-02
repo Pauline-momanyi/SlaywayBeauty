@@ -1,3 +1,5 @@
 class BookingSerializer < ActiveModel::Serializer
-  attributes :service, :date, :time
+  attributes :id, :service, :date, :time, :status
+
+  belongs_to :user
 end

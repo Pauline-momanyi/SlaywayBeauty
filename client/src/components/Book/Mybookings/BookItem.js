@@ -5,7 +5,6 @@ function BookItem() {
     <tr className="hover:bg-trow hover:bg-opacity-20">
     <td className="p-2 whitespace-nowrap">
       <div className="flex">
-        {/* <div className="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3"><FaCalendar/></div> */}
         <div className="font-medium text-gray-800">
           <div>Jul 30</div>
           <div>11:00 am</div>
