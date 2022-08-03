@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -6,8 +6,9 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Active from './Active';
 import Past from './Past';
+import { useNavigate } from 'react-router-dom';
 
-const Mybookings=({bookings})=>{
+const Mybookings=({user})=>{
 const [value,setValue]=useState(0)
 const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -33,6 +34,16 @@ const handleChange = (event, newValue) => {
       </div>
     );
   }
+
+  let navigate = useNavigate()
+
+  console.log(user);
+  useEffect(()=>{
+    if(user == null){
+      navigate('/auth')
+    }
+  }, [user])
+
   
     return (
         <section>

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
+import {useNavigate} from 'react-router-dom'
 import {FaCalendar} from 'react-icons/fa'
-import Trow from "./Trow";
 import "./Admin.css";
 
-function Admin() {
+function Admin({user}) {
   const [allbookings, setAllbookings] = useState([]);
   const [err, setErrors] = useState([]);
   useEffect(() => {
@@ -35,6 +35,15 @@ function Admin() {
         }
       });
   }
+
+  let navigate = useNavigate()
+
+  console.log(user);
+  useEffect(()=>{
+    if(user == null){
+      navigate('/auth')
+    }
+  }, [user])
 
   return (
     <section className="antialiased text-gray-600 px-4">

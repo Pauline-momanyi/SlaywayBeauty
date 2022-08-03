@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react'
 
 function Past() {
   const [pasts, setPasts] = useState([])
+  const [loading, setLoading] = useState(true)
   useEffect(()=>{
     fetch('/api/bookings')
     .then((r) => {
@@ -10,6 +11,7 @@ function Past() {
         r.json().then(data=> {
           console.log(data)
           setPasts(data)
+          setLoading(false)
         })
       } else {
         r.json().then((err) => console.log(err));
@@ -17,6 +19,13 @@ function Past() {
     });
   },[])
   return (
+    <div>
+            {loading?(
+    <>
+      <h2 className="text-black p-20 text-center">Loading ...</h2>
+    </>
+  ):<>
+      {pasts.length > 0?(
     
       <table className="table-auto w-full">
       <tbody className="text-md divide-y divide-gray-100">
@@ -41,10 +50,17 @@ function Past() {
             </tr>
         ))}
       </tbody>
-    </table>
-   
-   
-  // {past ? "Loading..." : "Login"}
+    </table>):(
+      <>
+        <h2 className="text-black p-20 text-center">No Bookings Found</h2>
+      </>
+    )
+        
+}
+</>
+}
+  
+  </div>
   )
 }
 

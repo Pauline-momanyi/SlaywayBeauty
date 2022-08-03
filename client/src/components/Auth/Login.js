@@ -25,9 +25,9 @@ function Login({onLogin}){
       if (r.ok) {
         r.json().then((user) => {
           // console.log(user);
-          navigate('/book')
+          // navigate('/book')
         onLogin(user)
-       
+        window.location.reload()
        
       });
       } else {

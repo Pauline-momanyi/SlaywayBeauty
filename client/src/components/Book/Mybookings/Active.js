@@ -1,23 +1,19 @@
 import React, { useEffect, useState } from "react";
-import BookItem from "./BookItem";
 import Reviews from "../Reviewspop";
 
 function Active() {
   const [actives, setActives] = useState([])
   const [errors, setErrors] = useState([])
   const [show, setShow] = useState(false)
+  const [loading, setLoading] = useState(true)
   useEffect(()=>{
     fetch('/api/bookings')
-    .then((r) => {
-      if (r.ok) {
-        r.json().then(data=> {
-          console.log(data)
-          setActives(data)
-        })
-      } else {
-        r.json().then((err) => console.log(err));
-      }
-    });
+    .then((r)=>r.json())
+    .then(data=> {
+      console.log(data)
+      setActives(data)
+      setLoading(false)
+    })
   },[])
 
   function handleCancel(id){
@@ -25,16 +21,21 @@ function Active() {
     fetch(`/api/bookings/${id}`,{
       method: 'DELETE'
     }).then((r) => {
-      if (!r.ok) {
-      //   r.json().then((data) => {
-      //     console.log(data);          
-      // });
-      // } else {
+      console.log(r);
+      console.log(id);
+      if (r.ok) {
+        r.json().then(()=>{
+          const updatedActives = actives.filter((active)=>active.id !== id);
+          setActives(updatedActives)
+          console.log(actives);
+        })
+      }else{
         r.json().then((err) => setErrors(err.errors));
       }
     });
 
   }
+  
 
   function handleDone(id){
     console.log(id);
@@ -55,7 +56,15 @@ function Active() {
       });
   }
 
-  return (<>
+  return (
+    <div>
+      {loading?(
+    <>
+      <h2 className="text-black p-20 text-center">Loading ...</h2>
+    </>
+  ):<>
+    {actives.length > 0?(
+  <>
     <table className="table-auto w-full">
       <tbody className="text-md divide-y divide-gray-100">
         {actives.map(active=>(active.status === true &&
@@ -87,11 +96,18 @@ function Active() {
               </td>
               </tr>
        ))}
-        {/* <BookItem/> */}
       </tbody>
     </table>
     {show && <Reviews />}
-  </>);
+  </>):(
+    <>
+      <h2 className="text-black p-20 text-center">No Bookings Found</h2>
+    </>
+  )
+}</>
+}
+  </div>
+  );
 }
 
 export default Active;

@@ -136,8 +136,8 @@ function Calender({user, bookings}) {
       </div>
 
       {
-        booked? <div>
-          <p >Slot Booked Successfuly. See you then.</p>
+        booked? <div className="flex flex-col items-center justify-center ml-20">
+          <h2 >Slot Booked Successfuly. See you then!</h2>
              <div className="bg-pink text-white p-8 font-semibold border border-black border-double">
           <p>Date: {date.toString().slice(4, 15)}</p>
           <p>Time: {time.time}</p>
@@ -149,7 +149,7 @@ function Calender({user, bookings}) {
           </div>
         </div>:
       <div className="flex flex-col items-center justify-center ml-20">
-        <div className="bg-pink text-white p-8 font-semibold border border-black ml-20">
+        <div className="bg-pink text-white p-5 font-semibold border border-black">
           <p>Date: {date.toString().slice(4, 15)}</p>
           <p>Time: {time.time}</p>
           <p>Service: {service}</p>
