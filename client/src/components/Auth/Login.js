@@ -1,9 +1,11 @@
 import React, {useState} from "react";
 import {useNavigate} from 'react-router-dom'
+import Mainbg from '../../img/mainbg.jpg'
+import {FaArrowRight} from 'react-icons/fa'
 
 
 
-function Login({onLogin}){
+function Login({handleChange, onLogin}){
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -36,7 +38,7 @@ function Login({onLogin}){
     <div className="container mx-auto">
       <div className="flex justify-center px-6">
         <div className="w-full xl:w-3/4 lg:w-11/12 flex">
-          <div className="w-full h-auto bg-gray-400 hidden lg:block lg:w-5/12 bg-cover rounded-l-lg"></div>
+        <img src={Mainbg} alt="image" className="w-full h-auto bg-gray-400 hidden lg:block lg:w-5/12 bg-cover rounded-l-lg m-10"/>
 
           <div className="w-full lg:w-7/12 bg-white rounded-lg lg:rounded-l-none">
             <h3 className="pt-4 text-2xl text-center">Sign In</h3>
@@ -79,7 +81,7 @@ function Login({onLogin}){
               {/* </div> */}
               <div className="mb-3 mt-3 text-center">
                 <button
-                  className="w-64 px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+                  className="w-64 px-4 py-2 my-4 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
                   type="submit"
                   onClick={handleSubmit}
                 >
@@ -92,7 +94,7 @@ function Login({onLogin}){
                 </div>
               </div>
               {/* <hr className="mb-3 border-t" /> */}
-              <div className="text-center">
+              {/* <div className="text-center">
                 <p>Forgot Password? </p>
                 <a
                   className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
@@ -100,16 +102,18 @@ function Login({onLogin}){
                 >
                   Reset!
                 </a>
-              </div>
+              </div> */}
             
               <div className="text-center">
                 <p>Don't have an account? </p>
-                <a
+                <FaArrowRight className="text-black"/>
+                
+                {/* <a
                   className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
-                  href="./index.html"
+                  href=""
                 >
                   Create One!
-                </a>
+                </a> */}
               </div>
             </form>
           </div>

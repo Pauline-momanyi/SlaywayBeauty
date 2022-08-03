@@ -4,6 +4,7 @@ import Stats from './Stats/Stats';
 import Services from './Services/Services';
 import Reviews from './Reviews';
 import Contact from './Contact/Contact';
+import Header from './Header/Header';
 
 
 function Home() {
@@ -24,6 +25,7 @@ function Home() {
   },[])
   return (
     <>
+    <Header/>
     <Follow/> 
     <Services/>
     <Stats/>

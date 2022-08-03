@@ -9,7 +9,7 @@ function Reviews({reviews}) {
     <div className="flex border-solid border-gray-200" key={review.id}>
       <div className="pt-1 mr-6 text-center">
         <div className="px-2 pb-1 mb-1 border-b border-gray-400">
-          <p className="text-sm text-blue-gray-700">Jul</p>
+          <p className="text-sm text-blue-gray-700">Aug</p>
         </div>
         <div className="px-2">
           <p className="text-lg font-bold">{review.created_at.slice(8,10)}</p>

@@ -36,6 +36,8 @@ function App() {
           //   navigate('/auth')
           // }
          
+      }else{
+        navigate('/auth')
       }
     });
   }, []);
@@ -60,8 +62,8 @@ function App() {
   return (
     
       <div className="App">
-        <Slayway user={user}/>
-        <Header user={user} setUser={setUser}/>
+        <Slayway user={user} setUser={setUser}/>
+        {/* <Header user={user} setUser={setUser}/> */}
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/admin' element={<Admin/>}/>

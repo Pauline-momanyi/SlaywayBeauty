@@ -33,7 +33,7 @@ function Services() {
                 <Card
                 emoji = {ehair}
                 heading = {'Hair'}
-                detail = {'Lorem ipsum is a very dummy text'}
+                detail = {' Your hair, our passion · Hair is your crowning glory · Happy hair days'}
                 />
             </motion.div>
             <motion.div
@@ -45,7 +45,7 @@ function Services() {
                 <Card
                 emoji = {enails}
                 heading = {'Nails'}
-                detail = {'Jlorem ipsum, lorem ipsum lorem ipsum'}
+                detail = {'We are committed to your nails · We got the nail art · Manicure you\'ll love'}
                 />
             </motion.div>
             <motion.div             
@@ -57,7 +57,7 @@ function Services() {
                 <Card
                 emoji = {emakeup}
                 heading = {'MakeUp'}
-                detail = {'Lorem ipsum is a dummy text used by here now'}
+                detail = {'If you never try, you will never look hot · Makeup makes you great'}
                 />
             </motion.div>
             <div className="blur s-blur1" style={{background:'#fe7d6a40'}}></div>

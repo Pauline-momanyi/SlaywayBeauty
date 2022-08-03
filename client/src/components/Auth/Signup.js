@@ -1,5 +1,7 @@
 import React, {useState} from "react";
 import {useNavigate} from 'react-router-dom'
+import Mainbg from '../../img/mainbg.jpg'
+import {FaArrowLeft} from 'react-icons/fa'
 
 const Signup = ({onLogin}) => {
     const [username, setUsername] = useState("");
@@ -47,11 +49,11 @@ const Signup = ({onLogin}) => {
     <div className="container mx-auto">
       <div className="flex justify-center px-6">
         <div className="w-full xl:w-3/4 lg:w-11/12 flex">
-          <div className="w-full h-auto bg-gray-400 hidden lg:block lg:w-5/12 bg-cover rounded-l-lg"></div>
+          <img src={Mainbg} alt="image" className="w-full h-auto bg-gray-400 hidden lg:block lg:w-5/12 bg-cover rounded-l-lg m-10"/>
 
           <div className="w-full lg:w-7/12 bg-white rounded-lg lg:rounded-l-none">
             <h3 className="pt-4 text-2xl text-center">Create an Account!</h3>
-            <form className="px-8 pb-8 mb-4 bg-white rounded flex flex-col justify-center items-center">
+            <form className="px-8 pb-4 mb-2 bg-white rounded flex flex-col justify-center items-center">
               <div className="mb-4 md:mr-2 md:mb-0">
                 <label
                   className="block mb-2 text-sm font-bold text-gray-700"
@@ -153,12 +155,13 @@ const Signup = ({onLogin}) => {
             </form>
             <div className="text-center">
                 <p>Already have an account? </p>
-                <a
+                <FaArrowLeft className="text-black mb-6"/>
+                {/* <a
                   className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
-                  href="./index.html"
+                  href=""
                 >
                   Login
-                </a>
+                </a> */}
               </div>
           </div>
         </div>

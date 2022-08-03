@@ -33,4 +33,8 @@ span{
     .socials{
         display: none;
     }
+
+    .bookbutt{
+        transform: scale(0.8);
+    }
 }
