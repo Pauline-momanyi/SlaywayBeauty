@@ -1,70 +1,27 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
-import {useNavigate} from 'react-router-dom'
-
-import { Fragment } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
+import { Disclosure} from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import Logo from '../../img/Logo.png'
-import { FaTwitter, FaFacebook, FaInstagram, FaWhatsapp, FaUser} from 'react-icons/fa'
 import './Header.css'
-// import { Button } from "@material-tailwind/react";
 
-const userin = {
-  name: 'Tom Cook',
-  email: 'tom@example.com',
-  imageUrl:
-  'http://www.genocideresearchhub.org.rw/wp-content/uploads/2021/12/1024px-User-avatar.svg_.png',
-}
 const navigation = [
-  { name: 'Home', href: '#', current: true },
+  { name: 'Home', href: '', current: true },
   { name: 'Testimonials', href: '#reviews', current: false },
   { name: 'Services', href: '#services', current: false },
   { name: 'Stats', href: '#stats', current: false },
   { name: 'Contact', href: '#contacts', current: false },
 ]
-const userNavigation = [
-  { name: 'Your Profile', href: '#' },
-  { name: 'Settings', href: '#' },
-  // { name: 'Sign out', href: '#' },
-]
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-function Header({user, setUser}) {
-  let navigate = useNavigate()
+function Header() {
 
-  function handleLogoutClick() {
-    fetch("/api/logout", { method: "DELETE" }).then((r) => {
-      if (r.ok) {
-        setUser(null);
-        console.log('deleted');
-        navigate('/auth')
-      }
-    });
-  }
   return (
     <>
-      {/* <div className="top flex shadow-md max-width-7xl">
-        <div className="top-l ml-10">
-          <h4 className='text-xl'><span>S</span>LAY<span>W</span>AY</h4>
-          <small>beauty&spa</small>
-        </div>
-        <div className="top-r">
-          <div className="socials p-3 space-x-2">
-            <a href="https://www.facebook.com/"><FaFacebook/> </a>
-            <a href="https://www.instagram.com/"><FaInstagram/></a>
-            <a href="https://www.twitter.com/"><FaTwitter/></a>
-            <a href="https://www.instagram.com/"><FaWhatsapp/></a>        
-          </div> 
-          <Link to='/auth'>      
-          <button className="bg-pink hover:bg-red-200 text-white font-bold py-2 px-2 rounded outline-none mr-10">Book Now</button>
-          </Link> 
-        </div>       
-      </div> */}
-  
+ 
       <div className="min-h-full">
         <Disclosure as="nav" className="bg-white">
           {({ open }) => (

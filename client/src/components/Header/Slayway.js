@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link, useNavigate} from 'react-router-dom'
-import { FaTwitter, FaFacebook, FaInstagram, FaWhatsapp, FaUser} from 'react-icons/fa'
+import { FaTwitter, FaFacebook, FaInstagram, FaWhatsapp} from 'react-icons/fa'
 import './Header.css'
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
@@ -8,11 +8,6 @@ import { Menu, Transition } from '@headlessui/react'
 
 
 function Slayway({user, setUser}) {
-  const userNavigation = [
-    { name: 'Your Profile', href: '#' },
-    { name: 'Settings', href: '#' },
-    // { name: 'Sign out', href: '#' },
-  ]
 
   let navigate = useNavigate()
 
@@ -21,21 +16,14 @@ function Slayway({user, setUser}) {
     'http://www.genocideresearchhub.org.rw/wp-content/uploads/2021/12/1024px-User-avatar.svg_.png',
   }
 
-  function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
-  }
-    // if (user){
-    //     console.log(user);
-    // }else{
-    //     console.log('none');
-    // }
     function handleLogoutClick() {
       fetch("/api/logout", { method: "DELETE" }).then((r) => {
         if (r.ok) { 
-          navigate('/auth')
+          navigate('/')
           setUser(null);
           console.log('deleted');
-         
+        }else{
+          navigate('/auth')
         }
       });
     }

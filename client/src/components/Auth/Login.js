@@ -5,7 +5,7 @@ import {FaArrowRight} from 'react-icons/fa'
 
 
 
-function Login({handleChange, onLogin}){
+function Login({onLogin}){
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -25,9 +25,10 @@ function Login({handleChange, onLogin}){
       if (r.ok) {
         r.json().then((user) => {
           // console.log(user);
+          navigate('/book')
         onLogin(user)
        
-        navigate('/book')
+       
       });
       } else {
         r.json().then((err) => setErrors(err.errors));

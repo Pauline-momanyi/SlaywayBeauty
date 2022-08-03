@@ -37,8 +37,9 @@ const Signup = ({onLogin}) => {
           if (r.ok) {
             r.json().then((user) => {
               // console.log(user);
-              onLogin(user)});            
               navigate('/book')
+              onLogin(user)});            
+             
           } else {
             r.json().then((err) => setErrors(err.errors));
           }

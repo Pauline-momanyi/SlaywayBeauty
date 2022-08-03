@@ -1,13 +1,18 @@
-import React from "react";
+import React, {useEffect} from "react";
+import {useNavigate} from 'react-router-dom'
 import Calender from "./Calender/Calender";
-// import Slots from "./Slots/Slots";
-// import Bookbutton from "./Bookbutton/Bookbutton";
 import Pricing from "./Pricing";
 import "./Book.css";
 
 
-
 function Book({user}) {
+  let navigate = useNavigate()
+  useEffect(() => {
+  if(user===null){
+    navigate('/auth')
+  }
+  }, []);
+  console.log(user)
   return (
     <div className="mainbook">
       <h3 className="text-center">BOOK APPOINTMENT</h3>
