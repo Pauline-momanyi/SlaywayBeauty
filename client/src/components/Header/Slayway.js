@@ -48,9 +48,9 @@ function Slayway({user, setUser}) {
            {/* Profile dropdown */}
            <Menu as="div" className="mx-3 relative">
              <div>
-               <Menu.Button className="rounded-full w-12 h-12 border-none items-center flex justify-center">
+               <Menu.Button className="rounded-full w-10 h-10 border-none items-center flex justify-center">
                  <span className="sr-only">Open user menu</span>
-                 <img className="h-10 w-10 rounded-full border-solid p-0.5 border-pink" src={userin.imageUrl} alt="" />
+                 <img className="h-7 w-7 rounded-full border-solid p-0.5 border-pink" src={userin.imageUrl} alt="" />
                </Menu.Button>
              </div>
              <Transition
