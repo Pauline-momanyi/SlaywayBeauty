@@ -14,5 +14,7 @@ Rails.application.routes.draw do
     resources :reviews, only: [:index, :create]
   end
 
+  resources :times
+
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 end

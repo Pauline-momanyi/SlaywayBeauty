@@ -22,6 +22,13 @@ function Calender({user, bookings}) {
 
   function handleService(e){
     setService(e.target.value)
+
+  }
+
+  function checkTimes(){
+    fetch(`/times?service=${service}&date=${date.toString().slice(4, 15)}`)
+    .then(res=>res.json())
+    .then(data=>console.log(data))
   }
 
   // console.log(selection);
@@ -99,8 +106,7 @@ function Calender({user, bookings}) {
     });
   }
 
-
-
+  
   intervals(intime, outtime);
   return (
     <div className="book">
@@ -117,7 +123,7 @@ function Calender({user, bookings}) {
           Select Service:
         </label>
 
-        <select name="service" id="service" value={service} onChange={handleService}>
+        <select name="service" id="service" value={service} onChange={handleService} onClick={checkTimes}>
           <option value="Hair">Hair</option>
           <option value="Nails">Nails</option>
           <option value="Make-Up">Make Up</option>
