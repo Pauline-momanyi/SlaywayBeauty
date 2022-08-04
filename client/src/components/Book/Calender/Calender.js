@@ -141,7 +141,11 @@ function Calender({user, bookings}) {
           setBooked('booked')
           console.log(data)})
       } else {
-        r.json().then((err) => console.log(err));
+        r.json().then((err) => {
+          console.log(err);
+          setErrors(err.errors)
+          console.log(errors);
+        });
       }
     });
   }
@@ -217,6 +221,7 @@ function Calender({user, bookings}) {
           <p>Time: {time.time}</p>
           <p>Service: {service}</p>
         </div>
+        {errors && <h3 className="text-red-500">{errors}</h3>}
       
         <button className="bg-pink hover:bg-red-200 text-white font-bold py-2 px-2 rounded outline-none mt-5" onClick={handleSubmit}>
           Book Appointment
