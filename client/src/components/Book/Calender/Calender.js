@@ -10,6 +10,14 @@ function Calender({user, bookings}) {
   const [service, setService] = useState('Hair')
   const [time, setTime] = useState('')
   const [booked, setBooked] = useState('')
+  let arr2 = []
+
+   // slots
+  let intime = "07:00 Am";
+  let outtime = "08:00 Pm";
+  const [result, setResult] = useState([]);
+
+  const [bookedTimes, setBookedTimes] = useState([])
   // const [bookings, setBookings] = useState([])
 
   const [errors, setErrors] = useState([])
@@ -25,21 +33,8 @@ function Calender({user, bookings}) {
 
   }
 
-  function checkTimes(){
-    fetch(`/times?service=${service}&date=${date.toString().slice(4, 15)}`)
-    .then(res=>res.json())
-    .then(data=>console.log(data))
-  }
-
-  // console.log(selection);
-
-  // slots
-  let intime = "07:00 Am";
-  let outtime = "08:00 Pm";
-  const [result, setResult] = useState([]);
-  // console.log("Array", result)
-
   function intervals(startString, endString) {
+    // result.length = 0
     var start = moment(startString, "hh:mm a");
     var end = moment(endString, "hh:mm a");
     start.minutes(Math.ceil(start.minutes() / 15) * 15);
@@ -58,6 +53,36 @@ function Calender({user, bookings}) {
     return result;
   }
 
+  function checkTimes(){
+    console.log(result);
+    bookedTimes.length = 0
+    arr2.length = 0
+    fetch(`/times?service=${service}&date=${date.toString().slice(4, 15)}`)
+    .then(res=>res.json())
+    .then(data=>{data.map(timed=>bookedTimes.push(timed.time))
+      console.log(bookedTimes);
+      arr2 = result.reduce(function (prev, value) {
+
+        var isDuplicate = false;
+        for (var i = 0; i < bookedTimes.length; i++) {
+            if (value == bookedTimes[i]) {
+                isDuplicate = true;
+                break;
+            }
+        }
+          
+        if (!isDuplicate) {
+            prev.push(value);
+        }
+           
+        return prev;
+            
+    }, []);
+    console.log(arr2);
+    // setResult(arr2)
+    })
+    
+  }
 
   function handleSubmit(e){
     console.log(service);
@@ -113,8 +138,6 @@ function Calender({user, bookings}) {
       <div>
         <h4 className="text-center">{date.toString().slice(0, 15)}</h4>
         <Calendar minDate={new Date()} onChange={onChange} value={date} />
-        {/* {date && <p>{date}</p>} */}
-        {/* <p>{date.toString().slice(0, 25)}</p> */}
       </div>
 
       <div>
@@ -133,6 +156,7 @@ function Calender({user, bookings}) {
         {result && result.length > 0
           ? result.map((time, index) => {
               return (
+               
                 <div key={index}>
                   <p onClick={() => setTime({ time })}>{time}</p>
                 </div>
