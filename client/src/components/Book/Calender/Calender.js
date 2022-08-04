@@ -106,7 +106,7 @@ function Calender({user, bookings}) {
     <div className="book">
       <div>
         <h4 className="text-center">{date.toString().slice(0, 15)}</h4>
-        <Calendar onChange={onChange} value={date} />
+        <Calendar minDate={new Date()} onChange={onChange} value={date} />
         {/* {date && <p>{date}</p>} */}
         {/* <p>{date.toString().slice(0, 25)}</p> */}
       </div>

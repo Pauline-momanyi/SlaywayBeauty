@@ -14,7 +14,7 @@ const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  const paperStyle={width:'70%',margin:"10px auto"}
+  const paperStyle={margin:"10px auto"}
   function TabPanel(props) {
     const { children, value, index, ...other } = props;
   
@@ -46,7 +46,8 @@ const handleChange = (event, newValue) => {
 
   
     return (
-        <section>
+        <section >
+          <div className='w-full md:w-1/2 m-auto'>
          <h2 className='text-center'>My Bookings</h2>
         <Paper elevation={20} style={paperStyle}>
           <Tabs
@@ -68,7 +69,7 @@ const handleChange = (event, newValue) => {
             <Past/>
           </TabPanel>
       </Paper>
-      {/* <Reviews/>      */}
+      </div>
       </section>
       
     )

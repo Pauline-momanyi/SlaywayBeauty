@@ -27,7 +27,7 @@ function Past() {
   ):<>
       {pasts.length > 0?(
     
-      <table className="table-auto w-full">
+      <table className="table-auto w-full md:w-96 mx-auto">
       <tbody className="text-md divide-y divide-gray-100">
         {pasts.map(past=>(past.status === false &&
               <tr className="hover:bg-trow hover:bg-opacity-20" key={past.id}>

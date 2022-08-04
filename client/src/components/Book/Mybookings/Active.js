@@ -41,7 +41,7 @@ function Active() {
         <>
           {actives.length > 0 ? (
             <>
-              <table className="table-auto w-full">
+              <table className="table-auto w-full md:w-96 mx-auto">
                 <tbody className="text-md divide-y divide-gray-100">
                   {actives.map(
                     (active) =>

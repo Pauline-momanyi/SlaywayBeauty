@@ -36,7 +36,7 @@ function Pricing() {
         SlayWay. Beauty everyday.
       </h2>
       <p className="text-base text-gray-700 md:text-lg">
-        For the most favourable prices in town, we glam you. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        For the most favourable prices in town, we glam you. Be welcomed. Be pampered. Be yourself. Be your best. 
       </p>
     </div>
     <div className="grid max-w-md gap-10 row-gap-8 lg:max-w-screen-lg sm:row-gap-10 lg:grid-cols-3 xl:max-w-screen-lg sm:mx-auto">
@@ -52,7 +52,7 @@ function Pricing() {
           <div>
             <div className="text-lg font-semibold">Hair</div>
             <p className="text-sm text-gray-900">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, aliquam.
+            Hair is your crowning glory. We take hair seriously and every hair counts.
             </p>
             <div className="mt-1 mb-4 mr-1 text-4xl font-bold sm:text-5xl">
               Ksh. 2500
@@ -78,7 +78,7 @@ function Pricing() {
           <div>
             <div className="text-lg font-semibold">Nails</div>
             <p className="text-sm text-gray-900">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam, eum.
+            Like the rock of ages, our nails prevail!. Beautiful nails are our obsession.
             </p>
             <div className="mt-1 mb-4 mr-1 text-4xl font-bold sm:text-5xl">
               Ksh. 1500
@@ -104,7 +104,7 @@ function Pricing() {
           <div>
             <div className="text-lg font-semibold">Make Up</div>
             <p className="text-sm text-gray-900">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, saepe?
+            Make-up, and skincare have been more popular than usual in recent times.
             </p>
             <div className="mt-1 mb-4 mr-1 text-4xl font-bold sm:text-5xl">
               Ksh. 2500
