@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import {useNavigate} from 'react-router-dom'
-import {FaCalendar} from 'react-icons/fa'
+
 import "./Admin.css";
+import Adminitem from "./Adminitem";
 
 function Admin({user}) {
   const [allbookings, setAllbookings] = useState([]);
@@ -18,22 +19,17 @@ function Admin({user}) {
     });
   }, []);
 
-  function handleMissed(id){
-    console.log(id);
-    fetch(`/api/admins/${id}`,{
-        method: 'PATCH',
-        headers: {
-            "Content-Type": "application/json",
-        },
-     }).then((r) => {
-        if (r.ok) {
-          r.json().then((data) => {
-            console.log(data);          
-        });
-        } else {
-          r.json().then((err) => setErrors(err.errors));
-        }
-      });
+
+  function handleAllBookings(updatedBook){
+    console.log(updatedBook);
+    const updatedBookings = allbookings.map((booking) => {
+                  if (booking.id === updatedBook.id) {
+                    return updatedBook;
+                  } else {
+                    return booking;
+                  }
+                });
+                setAllbookings(updatedBookings);
   }
 
   let navigate = useNavigate()
@@ -52,7 +48,7 @@ function Admin({user}) {
       </header>
       <div className="p-3">
         <div className="overflow-x-auto">
-          <table className="table-auto w-full">
+        <table className="table-auto w-full">
             <thead className="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
               <tr>
                 <th className="p-2 whitespace-nowrap">
@@ -74,43 +70,10 @@ function Admin({user}) {
             </thead>
             <tbody className="text-sm divide-y divide-gray-100">
               {allbookings.map((booking) => (
-                //  <Trow booking = {booking} key={booking.id}/>
-                <tr className={`hover:bg-trow hover:bg-opacity-20 ${!booking.status ? "line-through" : ""}`} key={booking.id}>
-                  <td className="p-2 whitespace-nowrap">
-                    <div className="flex">
-                      <div className="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3">
-                        <FaCalendar />
-                      </div>
-                      <div className="font-medium text-gray-800">
-                        <div>{booking.date}</div>
-                        <div>{booking.time}</div>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="p-2 whitespace-nowrap ">
-                    <div className="text-left">{booking.user.username}</div>
-                  </td>
-                  <td className="p-2 whitespace-nowrap">
-                    <div className="text-left font-medium">
-                      {booking.user.phone}
-                    </div>
-                  </td>
-                  <td className="p-2 whitespace-nowrap">
-                    <div className="text-lg text-center">{booking.service}</div>
-                  </td>
-                  <td className="p-2 whitespace-nowrap">
-                    <div className="text-lg text-center">
-                      <button
-                        className={`bg-tred hover:bg-red-400 text-white font-bold py-2 px-2 rounded outline-none mt-5 ${!booking.status ? "disabled cursor-not-allowed opacity-25" : ""} `} onClick={()=>handleMissed(booking.id)}
-                      >
-                        MISSED
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                <Adminitem booking={booking} onUpdateBooking={handleAllBookings}/>
+                ))}
+                </tbody>
+              </table>
         </div>
       </div>
     </section>

@@ -14,7 +14,7 @@ const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  const paperStyle={width:'70%',margin:"20px auto"}
+  const paperStyle={width:'70%',margin:"10px auto"}
   function TabPanel(props) {
     const { children, value, index, ...other } = props;
   

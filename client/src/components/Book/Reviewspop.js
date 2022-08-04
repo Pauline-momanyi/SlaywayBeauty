@@ -1,7 +1,6 @@
 import React from "react";
 import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { ExclamationIcon } from "@heroicons/react/outline";
 
 export default function Reviews() {
   const [open, setOpen] = useState(true);
@@ -25,6 +24,8 @@ export default function Reviews() {
       if (r.ok) {
         r.json().then((data) => {
           console.log(data);
+          setOpen(false)
+          alert("Review submitted. Thank you.")
         // onLogin(user)
        
         // navigate('/book')
