@@ -37,7 +37,7 @@ const handleChange = (event, newValue) => {
 
   let navigate = useNavigate()
 
-  console.log(user);
+  // console.log(user);
   useEffect(()=>{
     if(user == null){
       navigate('/auth')

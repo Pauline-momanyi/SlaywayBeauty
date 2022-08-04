@@ -9,7 +9,7 @@ function Past() {
     .then((r) => {
       if (r.ok) {
         r.json().then(data=> {
-          console.log(data)
+          // console.log(data)
           setPasts(data)
           setLoading(false)
         })

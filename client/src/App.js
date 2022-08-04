@@ -25,9 +25,9 @@ function App() {
         r.json().then((user) => {
           if(user.admin){navigate('/admin')
           }else if(!user.admin){navigate('/book')
-          console.log(user);
+          // console.log(user);
         }else{}
-          console.log(user);
+          // console.log(user);
           setUser(user)});
           // if(user){
           //   navigate('/book')

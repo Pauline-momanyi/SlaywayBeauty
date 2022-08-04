@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Reviews from "../Reviewspop";
+import Reviewspop from "../Reviewspop";
 import BookItem from "./BookItem";
 
 function Active() {
@@ -11,7 +11,7 @@ function Active() {
     fetch("/api/bookings")
       .then((r) => r.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setActives(data);
         setLoading(false);
       });
@@ -25,10 +25,11 @@ function Active() {
   }
 
   function handleSoDone(id) {
-    console.log(id);
-    console.log("hey");
+    // console.log(id);
+    // console.log("hey");
     const doneActives = actives.filter((active) => active.id !== id);
     setActives(doneActives);
+    setShow(true)
   }
 
   return (
@@ -47,6 +48,7 @@ function Active() {
                     (active) =>
                       active.status === true && (
                         <BookItem
+                        key={active.id}
                           active={active}
                           setErrors={setErrors}
                           setShow={setShow}
@@ -57,7 +59,7 @@ function Active() {
                   )}
                 </tbody>
               </table>
-              {show && <Reviews />}
+              {show && <Reviewspop />}
             </>
           ) : (
             <>

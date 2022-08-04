@@ -26,9 +26,7 @@ export default function Reviews() {
           console.log(data);
           setOpen(false)
           alert("Review submitted. Thank you.")
-        // onLogin(user)
-       
-        // navigate('/book')
+     
       });
       } else {
         r.json().then((err) => setErrors(err.errors));

@@ -57,7 +57,7 @@ function Calender({user, bookings}) {
     fetch(`/times?service=${service}&date=${date.toString().slice(4, 15)}`)
     .then(res=>res.json())
     .then(data=>{data.map(timed=>bookedTimes.push(timed.time))
-      console.log(bookedTimes);
+      // console.log(bookedTimes);
       arr2 = result.reduce(function (prev, value) {
 
         var isDuplicate = false;
@@ -75,7 +75,7 @@ function Calender({user, bookings}) {
         return prev;
             
     }, []);
-    console.log(arr2);
+    // console.log(arr2);
     setResult(arr2)
     })
 
@@ -87,40 +87,40 @@ function Calender({user, bookings}) {
 },[service])
 
   function checkTimes(){
-    console.log(result);
-    bookedTimes.length = 0
-    arr2.length = 0
-    fetch(`/times?service=${service}&date=${date.toString().slice(4, 15)}`)
-    .then(res=>res.json())
-    .then(data=>{data.map(timed=>bookedTimes.push(timed.time))
-      console.log(bookedTimes);
-      arr2 = result.reduce(function (prev, value) {
+  //   console.log(result);
+  //   bookedTimes.length = 0
+  //   arr2.length = 0
+  //   fetch(`/times?service=${service}&date=${date.toString().slice(4, 15)}`)
+  //   .then(res=>res.json())
+  //   .then(data=>{data.map(timed=>bookedTimes.push(timed.time))
+  //     console.log(bookedTimes);
+  //     arr2 = result.reduce(function (prev, value) {
 
-        var isDuplicate = false;
-        for (var i = 0; i < bookedTimes.length; i++) {
-            if (value == bookedTimes[i]) {
-                isDuplicate = true;
-                break;
-            }
-        }
+  //       var isDuplicate = false;
+  //       for (var i = 0; i < bookedTimes.length; i++) {
+  //           if (value == bookedTimes[i]) {
+  //               isDuplicate = true;
+  //               break;
+  //           }
+  //       }
           
-        if (!isDuplicate) {
-            prev.push(value);
-        }
+  //       if (!isDuplicate) {
+  //           prev.push(value);
+  //       }
            
-        return prev;
+  //       return prev;
             
-    }, []);
-    console.log(arr2);
-    setResult(arr2)
-    })
+  //   }, []);
+  //   console.log(arr2);
+  //   setResult(arr2)
+  //   })
     
   }
 
   function handleSubmit(e){
-    console.log(service);
-    console.log(date.toString().slice(4, 15));
-    console.log(time.time);
+    // console.log(service);
+    // console.log(date.toString().slice(4, 15));
+    // console.log(time.time);
 
     e.preventDefault();
     // setIsLoading(true);
@@ -139,7 +139,8 @@ function Calender({user, bookings}) {
       if (r.ok) {
         r.json().then(data=> {
           setBooked('booked')
-          console.log(data)})
+          // console.log(data)
+        })
       } else {
         r.json().then((err) => {
           console.log(err);
@@ -160,7 +161,7 @@ function Calender({user, bookings}) {
       if (r.ok) {
         r.json().then(data=> {
           console.log(data)
-          bookings(data)
+          // bookings(data)
         })
       } else {
         r.json().then((err) => console.log(err));

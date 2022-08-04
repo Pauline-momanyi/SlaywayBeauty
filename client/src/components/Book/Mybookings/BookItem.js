@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+
 
 function BookItem({active, setErrors, setShow, handleRemove, handleSoDone}) {
   const {id} = active;
@@ -8,19 +9,15 @@ function BookItem({active, setErrors, setShow, handleRemove, handleSoDone}) {
     fetch(`/api/bookings/${id}`,{
       method: 'DELETE'
     })
-    // .then((r) => r.json())
     .then(()=>{
           handleRemove(id)
           console.log(`${active} ${id}`);
         })
     }
 
-  
-
-  
-
   function handleDone(){
-    console.log(id);
+    // setVal(true)
+    // console.log(id);
     fetch(`/api/bookings/${id}`,{
         method: 'PATCH',
         headers: {
@@ -29,7 +26,7 @@ function BookItem({active, setErrors, setShow, handleRemove, handleSoDone}) {
      }).then((r) => {
         if (r.ok) {
           r.json().then((data) => {
-            console.log(data);  
+            // console.log(data);  
             setShow(true);  
             handleSoDone(id)      
         });
@@ -38,8 +35,8 @@ function BookItem({active, setErrors, setShow, handleRemove, handleSoDone}) {
         }
       });
   }
-  return (
-    <tr className="hover:bg-trow hover:bg-opacity-20" key={active.id}>
+  return (<>
+      <tr className="hover:bg-trow hover:bg-opacity-20" key={active.id}>
     <td className="p-2 whitespace-nowrap">
       <div className="flex">
         <div className="font-medium text-gray-800">
@@ -66,6 +63,7 @@ function BookItem({active, setErrors, setShow, handleRemove, handleSoDone}) {
       </div>
     </td>
     </tr>
+    </>
   )
 }
 

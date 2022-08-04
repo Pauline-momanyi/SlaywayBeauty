@@ -12,7 +12,7 @@ function Book({user}) {
     navigate('/auth')
   }
   }, []);
-  console.log(user)
+  // console.log(user)
   return (
     <div className="mainbook">
       <h3 className="text-center">BOOK APPOINTMENT</h3>

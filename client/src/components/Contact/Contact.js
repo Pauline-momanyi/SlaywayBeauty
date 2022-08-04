@@ -1,10 +1,10 @@
-import React, {useRef, useState} from 'react'
+import React from 'react'
 import './Contact.css'
 // import emailjs from '@emailjs/browser';
 
 
 function Contact() {
-    const form = useRef();
+    // const form = useRef();
     // const [done, setDone] = useState(false) 
 
 //   const sendEmail = (e) => {
