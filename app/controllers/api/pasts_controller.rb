@@ -1,8 +1,10 @@
 class Api::PastsController < ApplicationController
 
     def index
-        # bookings = @current_user.bookings.where(status: false)
-        byebug
+        user = User.find_by(id: session[:user_id])
+        bookings = user.bookings.where(status: false)
+        # render json: {mess: "hey"}
+        # byebug
         render json: bookings    
     end 
     

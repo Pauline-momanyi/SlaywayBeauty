@@ -5,7 +5,7 @@ function Past() {
   const [pasts, setPasts] = useState([])
   const [loading, setLoading] = useState(true)
   useEffect(()=>{
-    fetch('/api/bookings')
+    fetch('/api/pasts')
     .then((r) => {
       if (r.ok) {
         r.json().then(data=> {

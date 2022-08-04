@@ -28,7 +28,7 @@ const Signup = ({onLogin}) => {
             phone,
             password,
             password_confirmation: passwordConfirmation,
-            // admin: true,
+            admin: true,
            
           }),
         }).then((r) => {
