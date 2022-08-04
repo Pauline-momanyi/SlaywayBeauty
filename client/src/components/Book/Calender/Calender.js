@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {Link} from 'react-router-dom'
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
@@ -33,8 +33,11 @@ function Calender({user, bookings}) {
 
   }
 
+
+  useEffect(()=>{
+
   function intervals(startString, endString) {
-    // result.length = 0
+    result.length = 0
     var start = moment(startString, "hh:mm a");
     var end = moment(endString, "hh:mm a");
     start.minutes(Math.ceil(start.minutes() / 15) * 15);
@@ -49,9 +52,39 @@ function Calender({user, bookings}) {
         current.add(120, "minutes");
       }
     }
+    bookedTimes.length = 0
+    arr2.length = 0
+    fetch(`/times?service=${service}&date=${date.toString().slice(4, 15)}`)
+    .then(res=>res.json())
+    .then(data=>{data.map(timed=>bookedTimes.push(timed.time))
+      console.log(bookedTimes);
+      arr2 = result.reduce(function (prev, value) {
+
+        var isDuplicate = false;
+        for (var i = 0; i < bookedTimes.length; i++) {
+            if (value == bookedTimes[i]) {
+                isDuplicate = true;
+                break;
+            }
+        }
+          
+        if (!isDuplicate) {
+            prev.push(value);
+        }
+           
+        return prev;
+            
+    }, []);
+    console.log(arr2);
+    setResult(arr2)
+    })
 
     return result;
   }
+
+  intervals(intime, outtime);
+
+},[service])
 
   function checkTimes(){
     console.log(result);
@@ -79,7 +112,7 @@ function Calender({user, bookings}) {
             
     }, []);
     console.log(arr2);
-    // setResult(arr2)
+    setResult(arr2)
     })
     
   }
@@ -132,7 +165,7 @@ function Calender({user, bookings}) {
   }
 
   
-  intervals(intime, outtime);
+
   return (
     <div className="book">
       <div>
