@@ -42,7 +42,11 @@ const Signup = ({onLogin}) => {
               window.location.reload()          
              
           } else {
-            r.json().then((err) => setErrors(err.errors));
+            r.json().then((err) => {
+              console.log(err);
+              console.log(err.errors);
+              setErrors(err.errors)
+            });
           }
         });
        
@@ -100,8 +104,9 @@ const Signup = ({onLogin}) => {
                   className="w-64 px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                   id="phone"
                   type="number"
-                  placeholder="Phone"
+                  placeholder="start with 07.. e.g. 0700112233"
                   value={phone}
+                  maxlength = "10"
                   onChange={(e) => setPhone(e.target.value)}
                 />
               </div>
@@ -150,9 +155,9 @@ const Signup = ({onLogin}) => {
               </div> 
               <div>
                 {errors.map((err) => (
-                <p key={err}>{err}</p>
+                <p key={err} className="text-red-500 font-semibold">{err}</p>
             ))}
-            </div>        
+            </div>  
         
             </form>
             <div className="text-center">
